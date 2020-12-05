@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { showPublication } from "../../redux/actions/publicationsActions";
-
+import {
+  publication,
+  showPublication,
+} from "../../redux/actions/publicationsActions";
+import { publicationService } from "../../services/publications";
 
 //component
-const List = (props) => {
-  
-  console.log(props)
+const List = ({ publication }) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    publicationService.getPublications().then((response) => {
+      setData(response.data.data);
+    });
+  }, []);
+
   return (
     <div>
-      <li></li>
+      {data.map((pub) => (
+        <li>
+          <h2>{pub.title}</h2>
+          <p>{pub.description}</p>
+        </li>
+      ))}
     </div>
   );
 };

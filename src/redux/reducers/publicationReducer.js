@@ -6,7 +6,7 @@ import {
 } from "../actions/publicationsActions";
 
 
-let initialState = {};
+let initialState = [];
 
 const publications = (state = initialState, action) => {
   switch (action) {
@@ -25,7 +25,7 @@ const publications = (state = initialState, action) => {
         ...state,
       };
     case SHOW_PUBLICATION:
-      console.log(action)
+
       return {
       };
 

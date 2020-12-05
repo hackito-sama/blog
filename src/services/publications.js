@@ -1,15 +1,17 @@
-import axios from 'axios'
+import axios from "axios";
 
-export const getPublications = async () => {
-    try {
+export const publicationService = {
+    getPublications,
+};
 
-        const url = "http://localhost:3500/api/publication";
-        const res = await axios.get(url);
-        if (res.status === 200) {
-            return res.data.data
-        }
-        
-    }catch (e){
-        console.log(e)
-    }
+async function getPublications(apiEndpoint) {
+  return await axios
+    .get("http://localhost:3500/api/publication")
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      console.log("Error in response");
+      console.log(err);
+    });
 }

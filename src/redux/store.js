@@ -1,6 +1,6 @@
 import { createStore } from "redux";
-import comments from "./reducers/publicationReducer";
+import publications from "./reducers/publicationReducer";
 
-const store = createStore(comments);
+const store = createStore(publications);
 
 export default store;
