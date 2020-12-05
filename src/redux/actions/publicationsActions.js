@@ -1,7 +1,10 @@
+import axios from 'axios'
+
 export const ADD_PUBLICATION = "ADD_PUBLICATION";
 export const EDIT_PUBLICATION = "EDIT_PUBLICATION";
 export const DELETE_PUBLICATION = "DELETE_PUBLICATION";
 export const SHOW_PUBLICATION = "SHOW_PUBLICATION";
+
 
 export const addPublication = () => {
   return {
@@ -21,8 +24,18 @@ export const deletePublication = () => {
   };
 };
 
-export const showPublication = () => {
-  return {
-    type: SHOW_PUBLICATION,
-  };
+export const showPublication = async () => {
+  try {
+    const url = "http://localhost:3500/api/publication";
+    const res = await axios.get(url);
+    return {
+      type: SHOW_PUBLICATION,
+      payload: res.data,
+    };
+  } catch (e) {
+    return {
+      type: SHOW_PUBLICATION,
+      payload: console.log('error: ', e),
+    };
+  }
 };

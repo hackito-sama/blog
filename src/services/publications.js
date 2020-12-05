@@ -1,11 +1,15 @@
 import axios from 'axios'
 
 export const getPublications = async () => {
-    const url = 'http://localhost:4000/api/publication';
+    try {
 
-    axios.get(url)
-        .then(res => {
-            console.log("from data: ", res.data)
-            return res;
-        })
+        const url = "http://localhost:3500/api/publication";
+        const res = await axios.get(url);
+        if (res.status === 200) {
+            return res.data.data
+        }
+        
+    }catch (e){
+        console.log(e)
+    }
 }

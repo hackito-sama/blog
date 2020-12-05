@@ -2,9 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { showPublication } from "../../redux/actions/publicationsActions";
 
-//component
-const List = () => {
 
+//component
+const List = (props) => {
+  
+  console.log(props)
   return (
     <div>
       <li></li>
